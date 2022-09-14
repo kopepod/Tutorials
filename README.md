@@ -15,7 +15,7 @@ tree
 ```
 ls -1 | wc -l
 ```
-4 See file's contents (careful, only small files)
+4. See file's contents (careful, only small files)
 ```
 cat myFile
 ```
