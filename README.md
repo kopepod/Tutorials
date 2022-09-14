@@ -99,3 +99,27 @@ for i in {0..10}; do mkdir "$i"; done
 ```
 find . -name \*.jpg -exec cp {} ~/Downloads/ \;
 ```
+25. See computing load
+```
+top
+```
+25. See free memory
+```
+free -h
+```
+27. Enter deamon process 
+```
+nohup bash my.sh &
+```
+28. See GPU usage
+```
+watch -n 0.5 nvidia-smi
+```
+29. See RAM memory disk usage
+```
+df -h
+```
+30. See folder disk usage
+```
+du -h ~/Downloads/
+``` 
