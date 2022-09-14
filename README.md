@@ -79,3 +79,7 @@ unzip myZip.zip
 ```
 chmod 777 myfile
 ```
+20. Create folder and loop
+```
+for i in {0..10}; do mkdir "$i"; done
+```
