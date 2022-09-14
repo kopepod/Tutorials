@@ -15,79 +15,87 @@ tree
 ```
 ls -1 | wc -l
 ```
-4. Find Files
+4 See file's contents (careful, only small files)
+```
+cat myFile
+```
+5. Find Files
 ```
 find . -name \*.py
 ```
-5. See current path
+6. See current path
 ```
 pwd
 ```
-6. Read full path
+7. Read full path
 ```
 readlink -f myFile
 ```
-7. Change path
+8. Change path
 ```
 cd ~/Downloads/
 ```
-8. Remote login
+9. Change above
+```
+cd ..
+```
+10. Remote login
 ```
 ssh user@host
 ```
-9. Remote login with certificate
+11. Remote login with certificate
 ```
 ssh -i cert.pem user@host
 ```
-10. Remote copy single file to current working directory
+12. Remote copy single file to current working directory
 ```
 scp user@host:PATH/File .
 ```
-11. Remote copy multiple files to specific path
+13. Remote copy multiple files to specific path
 ```
 scp -r user@host:PATH/* ~/Downloads/
 ```
-12. Remote copy verbose
+14. Remote copy verbose
 ```
 scp -v myFile user@host:~
 ```
-13. Download remote resource with *wget*
+15. Download remote resource with *wget*
 ```
 wget URL -o myFile.html
 ```
-14. Create/modify file
+16. Create/modify file
 ```
 nano myFile.txt
 ```
-15. Copy file showing progress
+17. Copy file showing progress
 ```
 cp -v myFile ~/Downloads/
 ```
-16. Move directory
+18. Move directory
 ```
 mv MyDirectory ~/Downloads/
 ```
-17. Remove directory
+19. Remove directory
 ```
 rm -rf MyDirectory
 ```
-18. Generate dump zip file
+20. Generate dump zip file
 ```
 zip -r0 myZip.zip MyFolder/
 ```
-19. Unzip File
+21. Unzip File
 ```
 unzip myZip.zip
 ```
-20. Change permissions
+22. Change permissions
 ```
 chmod 777 myfile
 ```
-21. Create folder and loop
+23. Create folder and loop
 ```
 for i in {0..10}; do mkdir "$i"; done
 ```
-22. Find and execute, example copying all jpg files into a new directory
+24. Find and execute, example copying all jpg files into a new directory
 ```
 find . -name \*.jpg -exec cp {} ~/Downloads/ \;
 ```
