@@ -1,7 +1,5 @@
 # Basic Linux
-The repository comprises basis commands to execute on linux
-
-All commands' usage can be inspected as *man* [command], e.g. :
+The repository comprises basis commands to execute on linux. All commands' usage can be inspected as *man* [command], e.g. :
 ```
 man pwd
 ```
@@ -68,4 +66,16 @@ mv MyDirectory ~/Downloads/
 16. Remove directory
 ```
 rm -rf MyDirectory
+```
+17. Generate dump zip file
+```
+zip -r0 myZip.zip MyFolder/
+```
+18. Unzip File
+```
+unzip myZip.zip
+```
+19. Change permissions
+```
+chmod 777 myfile
 ```
