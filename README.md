@@ -103,7 +103,7 @@ find . -name \*.jpg -exec cp {} ~/Downloads/ \;
 ```
 top
 ```
-25. See free memory
+25. See RAM free memory
 ```
 free -h
 ```
@@ -115,7 +115,7 @@ nohup bash my.sh &
 ```
 watch -n 0.5 nvidia-smi
 ```
-29. See RAM memory disk usage
+29. See memory disk usage
 ```
 df -h
 ```
