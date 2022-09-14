@@ -49,3 +49,23 @@ scp -r user@host:PATH/* ~/Downloads/
 ```
 scp -v myFile user@host:~
 ```
+12. Download remote resource with *wget*
+```
+wget URL -o myFile.html
+```
+13. Create/modify file
+```
+nano myFile.txt
+```
+14. Copy file showing progress
+```
+cp -v myFile ~/Downloads/
+```
+15. Move directory
+```
+mv MyDirectory ~/Downloads/
+```
+16. Remove directory
+```
+rm -rf MyDirectory
+```
