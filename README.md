@@ -99,7 +99,7 @@ for i in {0..10}; do mkdir "$i"; done
 ```
 find . -name \*.jpg -exec cp {} ~/Downloads/ \;
 ```
-25. See computing load
+25. See computing load by process
 ```
 top
 ```
