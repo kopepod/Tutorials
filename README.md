@@ -83,3 +83,7 @@ chmod 777 myfile
 ```
 for i in {0..10}; do mkdir "$i"; done
 ```
+21. Find and execute, example copying all jpg files into a new directory
+```
+find . -name \*.jpg -exec cp {} ~/Downloads/ \;
+```
