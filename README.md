@@ -107,7 +107,7 @@ top
 ```
 free -h
 ```
-27. Enter deamon process 
+27. Enter daemon process 
 ```
 nohup bash my.sh &
 ```
