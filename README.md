@@ -9,7 +9,7 @@ man pwd
 ```
 ls -lXh
 ```
-2. Tree directory
+2. Directory's tree
 ```
 tree
 ```
@@ -17,31 +17,35 @@ tree
 ```
 ls -1 | wc -l
 ```
-4. See current path
+4. Find Files
+```
+find . -name \*.py
+```
+5. See current path
 ```
 pwd
 ```
-5. Change path
+6. Change path
 ```
 cd ~/Downloads/
 ```
-6. Remote login
+7. Remote login
 ```
 ssh user@host
 ```
-7. Remote login with certificate
+8. Remote login with certificate
 ```
 ssh -i cert.pem user@host
 ```
-8. Remote copy single file to current working directory
+9. Remote copy single file to current working directory
 ```
 scp user@host:PATH/File .
 ```
-9. Remote copy multiple files to specific path
+10. Remote copy multiple files to specific path
 ```
 scp -r user@host:PATH/* ~/Downloads/
 ```
-10. Remote copy verbose
+11. Remote copy verbose
 ```
 scp -v myFile user@host:~
 ```
