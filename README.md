@@ -143,3 +143,7 @@ df -h
 ```
 du -h ~/Downloads/
 ``` 
+7. See sensors every 0.5 seconds
+``` 
+watch -n 0.5 sensors
+```
