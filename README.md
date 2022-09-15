@@ -3,6 +3,15 @@ The repository comprises basis commands to execute on linux. All commands' usage
 ```
 man pwd
 ```
+See all previously executed commands
+```
+history
+```
+Run one previous command
+```
+!100
+```
+## Paths
 1. List directories with flags
 ```
 ls -lXh
@@ -39,87 +48,98 @@ cd ~/Downloads/
 ```
 cd ..
 ```
-10. Remote login
+10. Change back
+```
+cd -
+```
+## Working remotely
+1. Remote login
 ```
 ssh user@host
 ```
-11. Remote login with certificate
+2. Remote login with certificate
 ```
 ssh -i cert.pem user@host
 ```
-12. Remote copy single file to current working directory
+3. Remote copy single file to current working directory
 ```
 scp user@host:PATH/File .
 ```
-13. Remote copy multiple files to specific path
+4. Remote copy multiple files to specific path
 ```
 scp -r user@host:PATH/* ~/Downloads/
 ```
-14. Remote copy verbose
+5. Remote copy verbose
 ```
 scp -v myFile user@host:~
 ```
-15. Download remote resource with *wget*
+6. Download remote resource with *wget*
 ```
 wget URL -o myFile.html
 ```
-16. Create/modify file
+7. Logout
+```
+logout
+```
+## Files
+1. Create/modify file
 ```
 nano myFile.txt
 ```
-17. Copy file showing progress
+2. Copy file showing progress
 ```
 cp -v myFile ~/Downloads/
 ```
-18. Move directory
+3. Move directory
 ```
 mv MyDirectory ~/Downloads/
 ```
-19. Remove directory
+4. Remove directory
 ```
 rm -rf MyDirectory
 ```
-20. Generate dump zip file
+5. Generate dump zip file
 ```
 zip -r0 myZip.zip MyFolder/
 ```
-21. Unzip File
+6. Unzip File
 ```
 unzip myZip.zip
 ```
-22. Change permissions
+7. Change permissions
 ```
 chmod 777 myfile
 ```
-23. Create folder and loop
+8. Create folder and loop
 ```
 for i in {0..10}; do mkdir "$i"; done
 ```
-24. Find and execute, example copying all jpg files into a new directory
+9. Find and execute, example copying all jpg files into a new directory
 ```
 find . -name \*.jpg -exec cp {} ~/Downloads/ \;
 ```
-25. See computing load by process
+## Processes
+1. See computing load by process
 ```
 top
 ```
-25. See RAM free memory
+2. See RAM free memory
 ```
 free -h
 ```
-27. Enter daemon process 
+3. Enter daemon process 
 ```
 nohup bash my.sh &
 ```
-28. See GPU usage
+4. See GPU usage
 ```
 watch -n 0.5 nvidia-smi
 ```
-29. See memory disk usage
+5. See memory disk usage
 ```
 df -h
 ```
-30. See folder disk usage
+6. See folder disk usage
 ```
 du -h ~/Downloads/
 ``` 
