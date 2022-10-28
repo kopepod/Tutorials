@@ -1,5 +1,5 @@
 # Basic Linux
-The repository comprises basis commands to execute on linux. All commands' usage can be inspected as *man* [command], e.g. :
+The repository comprises basic commands to execute on linux. All commands' usage can be inspected as *man* [command], e.g. :
 ```
 man pwd
 ```
