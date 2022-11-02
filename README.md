@@ -1,6 +1,6 @@
 # Basic Linux
 The repository comprises basic commands to execute on linux. All commands' usage can be inspected as *man* [command], e.g. :
-```
+```bash
 man pwd
 ```
 See all previously executed commands
