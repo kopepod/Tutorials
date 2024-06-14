@@ -1,233 +1,98 @@
-# Thu 26 Nov 2020 22:16:46 CST 
+# Linux Specific Commands
 
 
-# ALL LINUX firefox #
+1. CPU freq controller
 
-1. Block ads Tabola 
-||taboola.com
-2. Element Hiding Helper for Adblock Plus
-
-3. Search Engine Creator
-https://www.google.com/search?ie=UTF-8&hl=en&gws_rd=cr&num=100&q=
-
-http://ready.to/search/en
-
-4. Block ext windows
-browser.link.open_newwindow.restriction 3
-
-# OS Linux-lite 2.0 #
-
-1. details broken repo and missing key
-
-fix:
-
-sudo leafpad /etc/apt/sources.list.d/google-chrome.list
-deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1397BC53640DB551
-
-2. Installations
-
-- MATLAB 2016b
-sudo bash intall
-- open CV opencv-2.4.10.zip
-mkdir release
-cd release
-
-make
-sudo make install
-
-- mexopencv-master.zip
-
-make MATLABDIR=/usr/local/MATLAB/R2016b/
-
-
-- ffmpeg BWD + FAST
-
-sudo apt-get install libavformat53 libavformat-dev libavcodec53
-sudo apt-get install libswscale-dev libavdevice-dev
-
-- main software 
-
-sudo apt-get install system-config-date gnome-disk-utility font-manager texmaker texlive-full jabref gedit libreoffice biber
-
-3. SD card boot inserted
-
-http://askubuntu.com/questions/95391/how-do-i-mount-an-sd-card
-
-or
-
-echo 1 | sudo tee /sys/bus/pci/rescan
-
-
-4. CPU freq controller
-
+```bash
 sudo apt-get install indicator-cpufreq cpufrequtils
+```
 
-5. Autologin
+2. Wake on lan
 
-sudo gedit /etc/lightdm/lightdm.conf
-
-[Seat:*]
-pam-service=lightdm
-pam-autologin-service=lightdm-autologin
-autologin-user=ley
-autologin-user-timeout=0
-
-6. Wake on lan
+```bash
 sudo apt-get install wakeonlan 
 wakeonlan -i 137.205.115.48 AC:9E:17:F0:A3:10
+```
 
-7. 
+3. remove text of files
 
-
-
-8. Connect VPN essex
-
-sudo apt-get -y install network-manager-openvpn
-
-sudo openvpn --config [FILE].ovpn
-
-Enter Auth Username:rl18276
-
-
-
-# 550XL #
-
-* OS Linux-lite 2.0
-
-1. brightness
-
-$ sudo gedit /etc/default/grub
-
-GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi_osi="
-
-$ sudo update-grub
-
-restart
-
-# Commands#
-
-* Mouse speed
-
-xinput list
-xinput list-props 9
-
-xinput set-prop 16 'Device Accel Constant Deceleration' 3
-
-xinput --set-prop "Microsoft Microsoft 5-Button Mouse with IntelliEye(TM)" "Device Accel Constant Deceleration" 0.8
-
-#remove text of files
-
+```bash
 sed -i 's/opencv2/\/dcs\/pg13\/rleyva\/Public\/OCV\/include\/opencv2/g' *.cpp
+```
 
+```bash
 find . -type f -exec sed -i 's/opencv2/\/dcs\/pg13\/rleyva\/Public\/OCV\/include\/opencv2/g'
+```
 
-## mac keyboard
-sudo -s
-echo 2 > /sys/module/hid_apple/parameters/fnmode 
 
-## ssh problems:
+4. ssh problems:
 
+```bash
 sudo ufw allow ssh
-
 sudo service ssh start
 sudo systemctl enable ssh
 sudo systemctl enable sshd.service
+```
 
-## Firefox language
-intl.accept_languages en-gb,en-us,en
-browser.search.countryCode US
-browser.search.region US
+5. gedit terminal
 
-## dom.webnotifications.enabled;false
-
-9. Python NLP
-
-sudo apt-get install build-essential gfortran libatlas-base-dev python-pip python-dev
-sudo pip install --upgrade pip
-
-Actual packages:
-
-sudo pip install numpy
-sudo pip install scipy
-
-sudo apt-get install python-matplotlib  OR sudo pip install matplotlib
-sudo pip install -U scikit-learn
-sudo pip install pandas
-
-
-10. gedit terminal
+```bash
 sudo apt-get install gedit-plugins dconf-tools
-dconf-editor
-- org->gnome->gedit->plugins->terminal 
+nano dconf-editor
+```
 
+org->gnome->gedit->plugins->terminal 
 
-11. Conda
-bash Anaconda3-2022.05-Linux-x86_64.sh
+6. chmod only files
 
-sudo chown -R frazier:frazier /home/frazier/anaconda3
-
-export PATH=/home/ubuntu/anaconda3/bin:$PATH
-
-12. chmod only files
+```
 find . -name "*.md" -exec chmod -x {} \;
+```
 
 
-12. pause key
+7. pause key
+```bash
 xmodmap -e "keycode 180 = Pause"
+```
 
+8. Rename several files
 
-13. pytube cypher.py
-
-I fixed it by adding the following pattern :
-r'\bc\s*&&\s*d\.set\([^,]+,.*?\((?P<sig>[a-zA-Z0-9$]+)\(\(0\s*,\s*window.decodeURIComponent'
-
-in the get_initial_function_name:
-
-def get_initial_function_name(js):
-    """Extract the name of the function responsible for computing the signature.
-
-    :param str js:
-        The contents of the base.js asset file.
-
-    """
-    # c&&d.set("signature", EE(c));
-    pattern = [
-        r'\bc\s*&&\s*d\.set\([^,]+,.*?\((?P<sig>[a-zA-Z0-9$]+)\(\(0\s*,\s*window.decodeURIComponent',
-        r'yt\.akamaized\.net/\)\s*\|\|\s*'
-        r'.*?\s*c\s*&&\s*d\.set\([^,]+\s*,\s*(?P<sig>[a-zA-Z0-9$]+)\(',
-        r'\.sig\|\|(?P<sig>[a-zA-Z0-9$]+)\(',
-        r'\bc\s*&&\s*d\.set\([^,]+\s*,\s*(?P<sig>[a-zA-Z0-9$]+)\(',
-    ]
-    logger.debug('finding initial function name')
-    return regex_search(pattern, js, group=1)```
-
-13. Rename several files
+```bash
 find -name "* *" -type f | rename 's/ /_/g'
-
 find -name "* *" -type f | rename 's/\(|\[|\]|\)//g'
+```
 
-14. Rename folders
+9. Rename folders
+```bash
 find -name "* *" -type d | rename 's/ /_/g'
+```
 
 
-15. Grep
+10. Grep
 
+```bash
 grep -o -P '(?<=( #start#  )).*(?=( #end#  ))' file
+```
 
-
-16. Linux Additions Guest VM add shared drive
+11. Linux Additions Guest VM add shared drive
+```bash
 sudo apt-get install dkms
 sudo bash ./VBoxLinuxAdditions.run
-
 sudo adduser $USER vboxsf
+```
 
-17. Change user to access media && Permissons external drive
-sudo chown u53r:u53r /mnt/TB1/
+12. Change user to access media && Permissons external drive
+
+```bash
+sudo chown <user>:<user> <path>
+```
 
 18. Change not to execute
+
+```bash
 chmod -x myfile
 chmod 777 myfile
+```
 
 19. Check number of files inside folder
 ls -1 | wc -l
