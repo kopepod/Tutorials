@@ -87,43 +87,53 @@ sudo adduser $USER vboxsf
 sudo chown <user>:<user> <path>
 ```
 
-18. Change not to execute
+13. Change not to execute
 
 ```bash
 chmod -x myfile
 chmod 777 myfile
 ```
 
-19. Check number of files inside folder
+14. Check number of files inside folder
+```bash
 ls -1 | wc -l
 N=$(ls -1 | wc -l)
+```
 
-20. Video Lenght FFMPEG
+15. Video Lenght FFMPEG
+```bash
 ffmpeg -i new.aac 2>&1 | grep "Duration"
+```
 
-21. Extract Audio
+16. Extract Audio
+```bash
 ffmpeg -i 0.mp4 -vn -ss 00:00:00 -t 00:00:30 -acodec aac new.aac
+```
 
-21. zip terminal no compression
+17. zip terminal no compression
+```bash
 zip -r -0 newfile.zip folder/
+```
 
-22. disk space
+18. disk space
+
+```bash
 df -h
+```
 
-23. ffmpeg x264
-conda install -c conda-forge x264
-conda install -c conda-forge ffmpeg
-
-24. Replace string in file
+19. Replace string in file
+```bash
 sed -e 's/@@@/#/g' FILE.sh > temp_exec.sh
+```
 
-24. Replace string in file and rewrite
+20. Replace string in file and rewrite
+```bash
 sed -i 's/mp4/jpg/g' FILE.sh
-
 
 sed -i "s/mylist.txt//g" mylist.txt 
 sed -i "s/mp4/mp4'/g" mylist.txt 
 sed -i "s/2018/file '2018/g" mylist.txt 
+```
 
 
 25. Replace string bash
