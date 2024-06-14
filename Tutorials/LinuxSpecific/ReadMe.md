@@ -701,7 +701,7 @@ run etcher move zip to SD card
 move ssh file into boot unit
 
 user: <user>
-password: <pass>
+password: <password>
 
 change password immediately
 
