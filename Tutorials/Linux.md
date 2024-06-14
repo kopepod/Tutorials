@@ -626,9 +626,9 @@ sed -i -e 's/>//g' runme.sh
 
 91. edit GRUB boot parameters
 
-# https://wiki.ubuntu.com/Kernel/KernelBootParameters
-# https://askubuntu.com/questions/19486/how-do-i-add-a-kernel-boot-parameter
-# https://www.kernel.org/doc/html/v4.14/admin-guide/kernel-parameters.html
+* https://wiki.ubuntu.com/Kernel/KernelBootParameters
+* https://askubuntu.com/questions/19486/how-do-i-add-a-kernel-boot-parameter
+* https://www.kernel.org/doc/html/v4.14/admin-guide/kernel-parameters.html
 
 ```bash
 sudo nano /etc/default/grub
