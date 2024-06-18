@@ -318,6 +318,11 @@ for i in `seq 1 10`; do mkdir -p "Sub_folder_$i"; find . -type f -maxdepth 1 | h
 pdfunite ET_* new.pdf
 ```
 
+48. copy randomly from directory
+```bash
+find . -type f -name "*.JPEG" -print0 | head -50000 | xargs -0 shuf -e -n 8 -z | xargs -0 cp --parents -t <TargetPATH>
+```
+
 58. suspend
 ```bash
 sleep 3600;systemctl suspend
