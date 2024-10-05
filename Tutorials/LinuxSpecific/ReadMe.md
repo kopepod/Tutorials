@@ -263,7 +263,7 @@ setfacl -R -m u:<user>:rwx <path>
 
 ```
 
-39. Copy specific file extension keeping structure
+39. Copy specific file extension keeping structure, copy only first n files
 
 ```bash
 find . -name \*.py -exec cp --parents  {} /media/u53r/64GB/MediaEval/ \;
@@ -273,6 +273,11 @@ only files
 
 ```bash
 find . -name \*.JPEG -exec cp {} ./Real_ILSVRC \;
+```
+
+```bash
+echo "Copy only 10 files"
+find . -maxdepth 1 -type f | head -10 | xargs cp -t "$destdir"
 ```
 
 40. Disable VM keyboard
