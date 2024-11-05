@@ -279,3 +279,26 @@ DF.drop([0, 1])
 ```python
 DF = DF.reindex(columns = list(DF.columns) + ["RightEye", "LeftEye", "Nose", "RightMouth", "LeftMouth", "BB_Face"]);
 ```
+
+33. add variable columns names dictionary
+
+```python
+	Demographics = {
+	"Asian" : [],
+	"Indian": [],
+	"African": [],
+	"Caucasian": [],
+	"MiddleEast": [],
+	"Latino": [],
+	"Target": []};
+	
+	for _ , row in DF.iterrows():
+		sDF = DF_meta[ DF_meta["Class_ID"] == row["ID"] ];
+		for k in Demographics.keys():
+			Demographics.get(k).append(sDF[k].values[0]);
+
+
+	for k in Demographics.keys():
+		DF = DF.assign(**{k: Demographics.get(k)})
+```
+
