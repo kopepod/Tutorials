@@ -302,3 +302,9 @@ DF = DF.reindex(columns = list(DF.columns) + ["RightEye", "LeftEye", "Nose", "Ri
 		DF = DF.assign(**{k: Demographics.get(k)})
 ```
 
+34. Sample
+
+```python
+DF.sample(frac = 0.5, replace = True, random_state = 1);
+
+```
