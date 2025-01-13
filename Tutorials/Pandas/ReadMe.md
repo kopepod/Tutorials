@@ -279,3 +279,22 @@ DF.drop([0, 1])
 ```python
 DF = DF.reindex(columns = list(DF.columns) + ["RightEye", "LeftEye", "Nose", "RightMouth", "LeftMouth", "BB_Face"]);
 ```
+
+33. get items and indices of a matching list
+
+```
+List1 = ["CelebA-HQ-img/21.jpg","CelebA-HQ-img/12.jpg","CelebA-HQ-img/13.jpg","CelebA-HQ-img/14.jpg","CelebA-HQ-img/15.jpg","CelebA-HQ-img/16.jpg","CelebA-HQ-img/17.jpg","CelebA-HQ-img/18.jpg","CelebA-HQ-img/19.jpg","CelebA-HQ-img/20.jpg","CelebA-HQ-img/11.jpg","CelebA-HQ-img/22.jpg","CelebA-HQ-img/23.jpg","CelebA-HQ-img/24.jpg","CelebA-HQ-img/25.jpg","CelebA-HQ-img/26.jpg"]
+
+List2 = list( DF[ DF["File"].isin(List) ] )
+
+Indices = [List1.index(i) for i in List2]
+
+```
+34. Sample
+
+```python
+DF.sample(frac = 0.5, replace = True, random_state = 1);
+
+```
+
+
