@@ -538,9 +538,7 @@ du -sh * .[^.]*
 ```bash
 crontab -e
 ```bash
-
 @reboot [part to shell script]
-
 
 @reboot sleep 10 && /usr/sbin/ifconfig > <file>
 @hourly /usr/sbin/ifconfig > <file>
