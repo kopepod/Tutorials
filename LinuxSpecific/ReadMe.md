@@ -541,7 +541,7 @@ crontab -e
 
 @reboot [part to shell script]
 
-```bash
+
 @reboot sleep 10 && /usr/sbin/ifconfig > <file>
 @hourly /usr/sbin/ifconfig > <file>
 ```
