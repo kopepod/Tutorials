@@ -672,20 +672,15 @@ xrandr --fb 1920x1080 --output DP-1 --mode 1680x1050 --scale-from 1920x1080 --ou
 transset -p --dec 0.05
 ```
 
-94. kill process
+95. convert PDF 2 images and insert border
 
-How to force kill process in Linux
-
-Use the pidof command to find the process ID of a running program or app
-pidof appname
-To kill process in Linux with PID immediately:
-kill -9 pid
-Want to kill process in Linux with application name forcefully? Try:
-killall -9 appname
-You can sent -15 (SIGTERM) signal to process requesting it to terminate gracefully:
-killall -15 your-app-name
-AND
-kill -15 pid
+```bash
+mkdir OUT
+pdftoppm in.pdf ./OUT/new.pdf -png
+for i in *.png; do convert "$i" -shave 40x40 -bordercolor black -border 10 "./OUT/$i"; done;
+convert ./OUT/*.png new.pdf
+rm -rf OUT/ *.png
+```
 
 95. xcfe install
 
