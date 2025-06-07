@@ -337,10 +337,12 @@ sleep 3600;systemctl suspend
 ```bash
 sudo nano /etc/default/locale
 ```
+```bash
 LANG="en_US.UTF-8"
 LC_TIME="en_GB.UTF-8"
 LC_PAPER="en_GB.UTF-8"
 LC_MEASUREMENT="en_GB.UTF-8"
+```
 
 60. copy folders only not files
 ```bash
@@ -689,6 +691,15 @@ sudo apt install libexo-1-0
 sudo apt-get install -y xfce4-terminal
 ```
 
+96. Media player controls
+
+```bash
+sudo apt install playerctl
+playerctl play-pause
+playerctl next
+playerctl previous
+playerctl stop
+```
 
 ## Raspberry 3
 
