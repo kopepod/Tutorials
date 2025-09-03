@@ -11,7 +11,7 @@ This tutorial shows how to create an APP to read and write into a google Firebas
 1. Open firebase at https://firebase.google.com/
 2. Go to console
 3. Click on add project
-4. Name the project, mine is **FireBaseTest**.
+4. Name the project, mine is **UsingFireBase**.
 5. Locate android on the APP type "Add an app to get started". Select the android icon
 6. Set the package name of the project, in my case: com.example.**usingfirebase**
 7. Click on register and download the _google-services.json_ file.
