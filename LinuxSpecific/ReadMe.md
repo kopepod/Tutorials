@@ -701,6 +701,12 @@ playerctl previous
 playerctl stop
 ```
 
+97. hash string
+
+```bash
+echo -n foobar | sha256sum
+```
+
 ## Raspberry 3
 
 1. PI OS Lite
