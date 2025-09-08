@@ -67,7 +67,6 @@ class MainActivity : AppCompatActivity() {
         player = ExoPlayer.Builder(this).build()
         playerView.player = player
 
-        // Example video (you can replace with your own URL or local file)
         val videoUri = Uri.parse("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
         val mediaItem = MediaItem.fromUri(videoUri)
 
