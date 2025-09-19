@@ -29,6 +29,7 @@ def read_item(item_id: int, q: Union[str, None] = None):
 3. Launch
 
 ```bash
+mkdir static
 fastapi dev Main.py
 ```
 
@@ -74,7 +75,7 @@ def InsertBB(File, BB = [20, 20, 150, 150], color = [0,255,0]):
 
 @app.get("/")
 def read_root():
-	Files = glob.glob("*.png")
+	Files = glob.glob("./src/*.png")
 	return {str(Files)}
 
 @app.get("/items/{item_id}")
@@ -92,7 +93,7 @@ def read_item(img_response: str, q: Union[str, None] = None):
 6. API call
 
 ```bash
-url http://127.0.0.1:8000/images/xolo.png
+curl http://127.0.0.1:8000/images/xolo.png
 ```
 
 Image path

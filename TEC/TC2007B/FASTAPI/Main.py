@@ -31,7 +31,7 @@ def InsertBB(File, BB = [20, 20, 150, 150], color = [0,255,0]):
 
 @app.get("/")
 def read_root():
-	Files = glob.glob("*.png")
+	Files = glob.glob("./src/*.png")
 	return {str(Files)}
 
 @app.get("/items/{item_id}")
