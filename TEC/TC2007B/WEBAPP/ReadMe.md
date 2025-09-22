@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.webkit.WebView //add this
 import android.webkit.WebViewClient //add this
+import android.window.OnBackInvokedDispatcher
+import androidx.core.os.BuildCompat
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,15 +31,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     // back button
-    override fun onBackPressed() {
-        // go back if possible
-        if (webREF.canGoBack())
-            webREF.goBack()
-        // exit otherwise
-        else
-            super.onBackPressed()
-
-    }
+		if (BuildCompat.isAtLeastT()) {
+            onBackInvokedDispatcher.registerOnBackInvokedCallback(
+                OnBackInvokedDispatcher.PRIORITY_DEFAULT
+            ) {
+                if (webREF.canGoBack())
+                    webREF.goBack()
+                // exit otherwise
+                else
+                    super.onBackPressed()
+            }
+        }
 }
 ```
 2. activity_main.xml

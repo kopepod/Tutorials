@@ -707,6 +707,24 @@ playerctl stop
 echo -n foobar | sha256sum
 ```
 
+98. Convert video on specific codec
+
+```bash
+
+for i in *.webm; 
+	do
+	ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 2>&1 "$i" > temp.log;
+	mystr=$( cat temp.log )
+	rm temp.log
+	#mystr=$(exit 1)
+	if [[ "$mystr" == "vp9" ]]; then
+		echo "Codec : $mystr found ..."
+		echo "Converting $i  >> mp4"
+		ffmpeg -i "$i" -vcodec h264 -acodec aac "./OUT/$i.mp4";
+	fi
+done
+```
+
 ## Raspberry 3
 
 1. PI OS Lite
