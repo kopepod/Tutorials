@@ -8,15 +8,18 @@ from OpenGL.GLUT import *
 NodosVisita = numpy.asarray( [
  	[0,0,0], # descarga de plastico
  	[10,0,30], # nodo intermedio de navegacion
- 	[10,0,50], # nodo intermedio de navegacion 	
+ 	[30,0,50], # nodo intermedio de navegacion 	
  	[70,0,70], # nodo donde esta la carga
 ], dtype = numpy.float64 )
 
-A = numpy.zeros((3,3))
+A = numpy.zeros((4,4))
 
 A[0,1] = 1;
 A[1,2] = 1;
-A[2,0] = 1;
+A[2,3] = 1;
+A[3,0] = 1;
+
+Path = [2,3,0,1,2,3,0,1]
 
 class Lifter:
 	def __init__(self, dim, vel, textures, idx, position, currentNode):
@@ -33,7 +36,7 @@ class Lifter:
 		self.angle = 0
 		self.vel = vel
 		self.currentNode = currentNode;
-		self.nextNode = currentNode;
+		self.nextNode = currentNode+1;
 		# El vector aleatorio debe de estar sobre el plano XZ (la altura en Y debe ser fija)
 		# Se normaliza el vector de direccion
 
@@ -66,34 +69,36 @@ class Lifter:
 		magnitude = math.sqrt(dirX**2 + dirZ**2)
 		self.Direction = [(dirX / magnitude), 0, (dirZ / magnitude)]
 
-
 	def ComputeDirection(self, Posicion, NodoSiguiente):
 		Direccion = NodosVisita[NodoSiguiente,:] - Posicion;
 		Direccion = numpy.asarray( Direccion);
 		Distancia = numpy.linalg.norm( Direccion )
 		Direccion /= Distancia;
 		return Direccion, Distancia;		
-		
+
+	def RetrieveNextNodePath(self, NodoActual):
+		print("RetrieveNextNode : %d" %(NodoActual));
+		if len(Path) == 0:
+			return 0;
+		else:
+			return Path.pop(NodoActual);
 
 	def RetrieveNextNode(self, NodoActual):
-		if NodoActual == len(NodosVisita) - 1 :
+		print("RetrieveNextNode : %d" %(NodoActual));
+		if NodoActual == 3:
 			return 0;
 		else:
 			return NodoActual + 1
 
 	def update(self, delta):
 
-		self.nextNode = self.RetrieveNextNode(self.currentNode);
-		
 		Direccion, Distancia =  self.ComputeDirection(self.Position, self.nextNode);
-		
-		if Distancia < 1:
+		#print("Distancia : %f" %(Distancia));
+		if Distancia < 5:
+			print("Computing new node ... ")
 			self.currentNode = self.nextNode;
-		
-		#u = numpy.asarray(self.Position)
-		#dist = numpy.linalg.norm(u-NodosVisita, axis = 1)
-		#NodoActual = numpy.argmin(dist);
-		
+			self.nextNode = self.RetrieveNextNodePath(self.currentNode);		
+
 		mssg = "Agent:%d \t State:%s \t Position:[%0.2f,0,%0.2f] \t NodoActual:%d \t NodoSiguiente:%d" %(self.idx, self.status, self.Position[0], self.Position[-1], self.currentNode, self.nextNode); 
 		print(mssg);
 
