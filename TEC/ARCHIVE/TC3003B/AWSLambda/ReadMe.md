@@ -11,7 +11,7 @@ This tutorial shows how to create a API with python backbone, steps:
 3. Create function
 4. Select Author from scratch
 5. Give funcion name, e.g., _myfunction_
-6. Select Runtime python 3.8
+6. Select Runtime python 3.12
 7. Leave the rest and click on create Function
 
 8. Edit _lambda_function.py_ as
@@ -29,18 +29,13 @@ def lambda_handler(event, context):
 ```
 
 ## API gateway
-1. Login https://us-east-1.console.aws.amazon.com/console/
-2. Search API gateway
-3. Click on Create API
-4. Select HTTP API and click Build
-5. Add integration, select Lambda
-6. Find _myfunction_
-7. Click on add integration
-8. Name API, e.g., newAPI
-9. Methods, leave ANY, click Next
-10. Stages default and click Next
-11. Review, click Create
-12. Copy *Invoke URL*, e.g., https://{APIgate}.execute-api.{zone}.amazonaws.com/
+1. Click on add trigger
+2. Select API Gateway
+3. Create new API
+4. REST API
+5. Security Open
+6. Click API Gateway
+7. Copy endpoint
 
 ## Curl
 Generate the following bash script and save it, e.g., mybash.sh
