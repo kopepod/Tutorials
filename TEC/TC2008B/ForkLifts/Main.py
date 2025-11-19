@@ -10,6 +10,10 @@ def main():
 	subparser.add_argument("--Delta", required = False, type = float, default = 0.05, help = "Velocidad de simulacion");
 	subparser.add_argument("--theta", required = False, type = float, default = 0, help = "");	
 	subparser.add_argument("--radious", required = False, type = float, default = 30, help = "");
+	subparser.add_argument("--T_max", required = True, type = float, help = "");
+	subparser.add_argument("--t0", required = True, type = float, help = "");	
+	subparser.add_argument("--t1", required = True, type = float, help = "");	
+	subparser.add_argument("--t2", required = True, type = float, help = "");		
 	subparser.set_defaults(func = LIB_TC2008B.Simulacion);
 
 	subparser = subparsers.add_parser("Nodos",  description = "Genera los nodos de la simulacion");

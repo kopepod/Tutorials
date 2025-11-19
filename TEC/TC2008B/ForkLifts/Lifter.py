@@ -19,12 +19,14 @@ A[1,2] = 1;
 A[2,3] = 1;
 A[3,0] = 1;
 
-Path = [2,3,0,1,2,3,0,1]
+Path = [2,3,0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3,0,1]
 
 class Lifter:
-	def __init__(self, dim, vel, textures, idx, position, currentNode):
+	def __init__(self, dim, vel, textures, idx, position, currentNode, semaforo_1_estado, D_mat):
 		self.dim = dim
 		self.idx = idx
+		self.estado = semaforo_1_estado 
+		self.D_mat = D_mat
 		# Se inicializa una posicion aleatoria en el tablero
 		# self.Position = [random.randint(-dim, dim), 6, random.randint(-dim, dim)]
 		self.Position = position
@@ -91,6 +93,18 @@ class Lifter:
 			return NodoActual + 1
 
 	def update(self, delta):
+	
+		print(self.vel)
+		print(self.estado)
+		print(self.D_mat[0])
+		print(self.idx)
+		print(self.D_mat[0][self.idx,:])
+	
+		if self.estado == 0:
+
+			self.vel = 1.5
+		else:
+			self.vel = 0
 
 		Direccion, Distancia =  self.ComputeDirection(self.Position, self.nextNode);
 		#print("Distancia : %f" %(Distancia));
@@ -100,7 +114,8 @@ class Lifter:
 			self.nextNode = self.RetrieveNextNodePath(self.currentNode);		
 
 		mssg = "Agent:%d \t State:%s \t Position:[%0.2f,0,%0.2f] \t NodoActual:%d \t NodoSiguiente:%d" %(self.idx, self.status, self.Position[0], self.Position[-1], self.currentNode, self.nextNode); 
-		print(mssg);
+		#print(mssg);
+
 
 		match self.status:
 			case "searching":

@@ -2,7 +2,6 @@ import yaml, pygame, random, glob, math, numpy
 from Lifter import Lifter
 from Basura import Basura
 
-
 from pygame.locals import *
 from OpenGL.GL import *
 from OpenGL.GLU import *
@@ -12,6 +11,10 @@ textures = [];
 lifters = [];
 basuras = [];
 delta = 0;
+t_rel = 0
+semaforo_1_estado = numpy.zeros(1, dtype = numpy.int32)
+D = numpy.zeros(1, dtype = list);
+
 
 def GeneracionDeNodos():
 	print("")
@@ -68,7 +71,7 @@ def Texturas(filepath):
     glGenerateMipmap(GL_TEXTURE_2D)
     
 def Init(Options):
-    global textures, basuras, lifters
+    global textures, basuras, lifters, semaforo_1_estado, D
     screen = pygame.display.set_mode( (Settings.screen_width, Settings.screen_height), DOUBLEBUF | OPENGL)
     pygame.display.set_caption("OpenGL: cubos")
     
@@ -97,15 +100,28 @@ def Init(Options):
         Texturas(File)
     
     # Posiciones inicales de los montacargas
-    Positions = numpy.zeros((Options.lifters, 3))
+    #Positions = numpy.zeros((Options.lifters, 3))
+    Positions = numpy.random.rand(Options.lifters, 3)*70
+    Positions[:,1] = 0
+    #ositions = Positions.astype(numpy.int32)
+    print(Positions)
     
-    NodosCarga = 10*[[70,0,70]];
+    NodosCarga = Options.Basuras*[[70,0,70]];
     
     CurrentNode = 0;
+    
+    # Probar en parejas
+    
+    # rutas aqui ...
+    # r1 = [0,1,2,3,4 , .... M^2 ]
+    # r2 = numpy.random.rand(0,M^2, M^2);
+    
+    #Rutas.append(r1)
+    #Rutas.append(r2)
    
     for i, p in enumerate(Positions):
         # i es el identificator del agente
-        lifters.append(Lifter(Settings.DimBoard, 0.7, textures, i, p, CurrentNode ))
+        lifters.append(Lifter(Settings.DimBoard, 0.7, textures, i, p, CurrentNode, semaforo_1_estado, D ))
     
     for i, n in enumerate(NodosCarga):
         # i es el identificador de la carga: sirve para realizar el inventario
@@ -235,20 +251,64 @@ def lookAt(theta):
     Settings.UP_Y,
     Settings.UP_Z)	
     
+
+def semaforo(Options):
+	global t_rel
+	global semaforo_1_estado
+	global delta
+	t0 = Options.t0
+	t1 = Options.t1
+	t2 = Options.t2
+	
+	t_rel += delta
+	
+	if t_rel < t0:
+		print("Luz Verde")
+		semaforo_1_estado[0] = 0
+	elif t0 < t_rel and t_rel < (t0 + t1):
+		print("Luz Amarilla")
+		semaforo_1_estado[0] = 1
+	elif t0 + t1 + t2 > t_rel:
+		print("Luz Roja")
+		semaforo_1_estado[0] = 2
+	else:
+		t_rel = 0
+		semaforo_1_estado[0] = 0
+	
+		
+	
+def DistMat(lifters):
+	global D
+	n=len(lifters)
+	D_mat = numpy.zeros((n,n));
+	for i, a in enumerate(lifters):
+		for j, b in enumerate (lifters):
+			D_mat[i, j] = numpy.linalg.norm(a.Position-b.Position)	
+	numpy.fill_diagonal(D_mat,numpy.inf)
+	D[0] = D_mat;
     
     
 def Simulacion(Options):
 	# Variables para el control del observador
-	global delta;
+	global delta, D;
 	theta = Options.theta
 	radius = Options.radious
 	delta = Options.Delta
 	Init(Options);
+	t_act = 0;
 	while True:
 		keys = pygame.key.get_pressed()  # Checking pressed keys
+		t_act += delta;
+		semaforo(Options)
+		DistMat(lifters)
+		print(D)
 		for event in pygame.event.get():
 			if event.type == pygame.KEYDOWN:
 				if event.key == pygame.K_ESCAPE or event.type == pygame.QUIT:
+					pygame.quit()	
+					return
+		if Options.T_max < t_act / 30:
+					print("T_max reached")
 					pygame.quit()	
 					return
 		if keys[pygame.K_RIGHT]:
@@ -264,6 +324,7 @@ def Simulacion(Options):
 				theta -= 1.0
 		lookAt(theta)
 		display()
+		print("Tiempo total : %f" %(t_act / 30));
 		display()
 		pygame.display.flip()
 		pygame.time.wait(10)
