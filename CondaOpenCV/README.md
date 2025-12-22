@@ -51,6 +51,6 @@ Desired output
 ```bash
 python Demo.py
 ```
-<img src="https://raw.githubusercontent.com/kopepod/CondaOpenCV/main/output_church_sift_kp.jpg" width="400" height="250" />
+<img src="https://github.com/kopepod/Tutorials/blob/0c1a3bce84d22d9490d9ba75f895d5b96ae7f39f/CondaOpenCV/output_church_sift_kp.jpg" width="400" height="250" />
 
 
