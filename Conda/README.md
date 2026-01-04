@@ -4,7 +4,21 @@ GPU environment
 
 https://developer.nvidia.com/cuda-downloads
 
+https://repo.anaconda.com/miniconda/
+
+https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+
+
 1. Install
+
+Miniconda
+
+```bash
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh 
+```
+
+Anaconda
 
 ```bash
 bash Anaconda3-2022.05-Linux-x86_64.sh
