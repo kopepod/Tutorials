@@ -620,17 +620,11 @@ sed -i -e '/&list/d' runme.sh
 
 sed -i -e '/&t=/d' runme.sh
 
-echo "insert yt-dlp command"
+echo "insert yt-dlp command and sleep"
 
-sed -i -e 's/</yt-dlp /g' runme.sh
+sed -i -e 's/</sleep 90\nyt-dlp "/g' runme.sh
 
-sed -i -e 's/>//g' runme.sh
-
-echo "insert sleep"
-
-sed -i -e 's/>//g' runme.sh
-
-
+sed -i -e 's/>/"/g' runme.sh
 
 ```
 
@@ -691,7 +685,7 @@ sudo apt install libexo-1-0
 sudo apt-get install -y xfce4-terminal
 ```
 
-96. Media player controls
+96. Media player controls -- play key
 
 ```bash
 sudo apt install playerctl
