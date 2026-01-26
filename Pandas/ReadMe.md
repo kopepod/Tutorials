@@ -49,7 +49,7 @@ DFb.loc[:]["Result"] = l;
 
 ```python
 DF = pandas.DataFrame(columns = ["c1", "c2"]);
-DF = pandas.concat([DF, pandas.DataFrame([{"c1" : 0, "c2": 1}])], ignore_index = True);
+DF = pandas.concat([DF, pandas.DataFrame([{"c1" : 0, "c2": 1}], dtype="object")], ignore_index = True);
 ```
 
 2. Select several columns
