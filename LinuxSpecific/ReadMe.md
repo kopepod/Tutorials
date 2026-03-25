@@ -236,6 +236,10 @@ zip -0 -s 1700M STB_UCF101.zip UCF101_BIDT_MBH.mat
 echo "-n in bytes, below is 1MB"
 zipsplit -n 1048576 archive.zip
 ```
+Folders
+```bash
+zip -r0 -s 10G file.zip ./Folder/
+```
 
 29. find text in subfiles and replace
 
