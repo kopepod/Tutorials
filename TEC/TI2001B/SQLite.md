@@ -4,6 +4,8 @@
 wget https://raw.githubusercontent.com/kopepod/Tutorials/refs/heads/main/FisherIris/fisher_iris.csv
 ```
 
+Write.py file to create database
+
 
 ```python
 import sqlite3
@@ -35,3 +37,24 @@ VALUES (?, ?, ?, ?, ?)
 conn.commit() # cierra conexion
 
 ```
+
+
+Read.py to read database
+
+
+```python
+import sqlite3
+
+conn = sqlite3.connect('fisher_iris.db')
+
+cursor = conn.cursor()
+
+cursor.execute("SELECT * FROM flowers")
+rows = cursor.fetchall()
+
+for row in rows:
+    print(row)  # Outputs tuples: (1, 'Alice', 30)
+
+conn.close()
+```
+
