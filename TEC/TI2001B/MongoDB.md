@@ -1,6 +1,6 @@
 # MongoDB
 
-## MongoDB install
+## MongoDB install Linux
 
 ```bash
 sudo apt update && sudo apt install gnupg curl -y
@@ -13,7 +13,7 @@ sudo systemctl enable mongod
 sudo systemctl status mongod
 ```
 
-## Community-CE GUI (Optional)
+## Community-CE GUI (Optional) all OS
 
 https://www.mongodb.com/try/download/compass
 
