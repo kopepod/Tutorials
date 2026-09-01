@@ -58,3 +58,10 @@ for row in rows:
 conn.close()
 ```
 
+```bash
+firefox https://colab.research.google.com/drive/1YhdTqDPzqFTHC1GoHjurvxMC_HQalAp-?usp=sharing
+```
+
+
+
+
