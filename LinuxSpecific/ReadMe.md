@@ -275,9 +275,15 @@ only files
 find . -name \*.JPEG -exec cp {} ./Real_ILSVRC \;
 ```
 
+Copy the the first 10 files keeping the path structure (Sample)
+
 ```bash
-echo "Copy only 10 files"
-find . -maxdepth 1 -type f | head -10 | xargs cp -t "$destdir"
+find . -type d -exec sh -c '
+  find "$1" -maxdepth 1 -type f \( -name "*.jpg" -o -name "*.png" \) | head -n 10 | while read -r file; do
+    echo "Copying: $file"
+    cp --parents "$file" ../SAMPLES/
+  done
+' _ {} \;
 ```
 
 40. Disable VM keyboard
