@@ -11,7 +11,7 @@ import datetime
 
 def main():
 	parser = argparse.ArgumentParser("Human traits", description = "This code generates a folder tree to classify human traits");
-	subparsers = parser.add_subparsers();
+	subparsers = parser.add_subparsers(dest = "cmd");
 	
 	subparser = subparsers.add_parser("GenDataset",  description = "Generates the dataset");
 	subparser.add_argument("--File", required = True, type = str, help = "CSV file comprising the landmarks");

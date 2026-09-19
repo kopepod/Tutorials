@@ -20,6 +20,8 @@ sudo ufw allow mysql
 systemctl start mysql
 sudo systemctl enable mysql
 sudo mysql_secure_installation
+sudo mysql
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'new_one';
 mysql -u root -p
 ```
 
